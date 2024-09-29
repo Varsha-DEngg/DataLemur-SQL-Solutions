@@ -1,0 +1,11 @@
+--Webinar Popularity [Snowflake SQL Interview Question]
+
+WITH temptable AS (SELECT 
+COUNT(CASE WHEN event_type='webinar' THEN 1 END) AS webinar_cnt,
+COUNT(CASE WHEN event_type!='webinar' THEN 1 END) AS other_cnt
+FROM marketing_touches
+WHERE EXTRACT(YEAR FROM event_date) = 2022 AND EXTRACT(MONTH FROM event_date)=4)
+
+SELECT 
+ROUND(100*(webinar_cnt *1.0/ (webinar_cnt + other_cnt))) AS webinar_pct
+FROM temptable;
