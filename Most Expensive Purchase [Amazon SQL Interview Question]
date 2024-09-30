@@ -1,0 +1,5 @@
+--Most Expensive Purchase [Amazon SQL Interview Question]
+
+SELECT DISTINCT customer_id,FIRST_VALUE(purchase_amount) OVER(PARTITION BY customer_id ORDER BY purchase_amount DESC) AS purchase_amount 
+FROM transactions 
+ORDER BY purchase_amount DESC
