@@ -1,0 +1,9 @@
+--Subject Matter Experts [Accenture SQL Interview Question]
+
+WITH temptable AS(SELECT employee_id,SUM(years_of_experience) AS total_exp,COUNT(DISTINCT domain) AS total_domain
+FROM employee_expertise
+GROUP BY employee_id
+HAVING (SUM(years_of_experience)>=8 AND COUNT(domain)=1) OR
+((SUM(years_of_experience)>=12 AND COUNT(domain)=2)))
+
+SELECT employee_id FROM temptable
