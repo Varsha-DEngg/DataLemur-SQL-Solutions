@@ -1,0 +1,6 @@
+--ApplePay Volume [Visa SQL Interview Question]
+
+SELECT merchant_id,SUM(CASE WHEN payment_method LIKE '_pple%' THEN transaction_amount ELSE 0 END) AS total_transaction
+FROM transactions
+GROUP BY merchant_id
+ORDER BY total_transaction DESC
