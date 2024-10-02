@@ -1,0 +1,12 @@
+--Highest Number of Products [eBay SQL Interview Question]
+
+
+WITH temptable AS(SELECT user_id,COUNT(product_id) AS total_prd,SUM(spend) AS total_spent
+FROM user_transactions
+GROUP BY user_id
+HAVING SUM(spend)>=1000)
+
+SELECT user_id,total_prd
+FROM temptable
+ORDER BY total_prd DESC,total_spent DESC
+LIMIT 3
