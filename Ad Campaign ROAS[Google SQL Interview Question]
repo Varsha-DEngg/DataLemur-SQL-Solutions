@@ -1,0 +1,9 @@
+--Ad Campaign ROAS[Google SQL Interview Question]
+
+WITH temptable AS (SELECT advertiser_id, SUM(revenue) AS total_revenue, SUM(spend) AS total_spent
+FROM ad_campaigns
+GROUP BY advertiser_id)
+
+SELECT advertiser_id,ROUND(CAST(total_revenue*1.0/total_spent as numeric),2) AS ROAS
+FROM temptable
+ORDER BY advertiser_id ASC
