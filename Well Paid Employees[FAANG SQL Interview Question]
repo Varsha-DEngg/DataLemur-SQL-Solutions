@@ -1,0 +1,7 @@
+--Well Paid Employees[FAANG SQL Interview Question]
+
+SELECT emp.employee_id,emp.name AS employee_name
+FROM employee AS mgr
+INNER JOIN employee AS emp
+ON emp.manager_id=mgr.employee_id
+WHERE emp.salary>mgr.salary
