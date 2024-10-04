@@ -1,0 +1,5 @@
+--Top Rated Businesses [Yelp SQL Interview Question]
+
+SELECT COUNT(CASE WHEN review_stars IN(4,5) THEN 1 END) AS business_count,
+ROUND((COUNT(CASE WHEN review_stars IN(4,5) THEN 1 END)*100.0/COUNT(*)),0) AS top_rated_pct
+FROM reviews
