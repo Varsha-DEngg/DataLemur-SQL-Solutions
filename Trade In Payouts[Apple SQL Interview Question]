@@ -1,0 +1,8 @@
+--Trade In Payouts[Apple SQL Interview Question]
+
+SELECT t1.store_id,SUM(t2.payout_amount) AS payout_total
+FROM trade_in_transactions AS t1
+INNER JOIN trade_in_payouts AS t2
+ON t1.model_id = t2.model_id
+GROUP BY t1.store_id
+ORDER BY payout_total DESC
